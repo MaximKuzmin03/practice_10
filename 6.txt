@@ -1,0 +1,49 @@
+1) 
+def InterpSearch(ls, val):
+    low = 0
+    high = (len(ls) - 1)
+    while low <= high and val >= ls[low] and val <= ls[high]:
+        index = low + int(((float(high - low) / ( ls[high] - ls[low])) * ( val - ls[low])))
+        if ls[index] == val:
+            return index
+        if ls[index] < val:
+            low = index + 1;
+        else:
+            high = index - 1;
+    return -1
+print(InterpSearch([1,2,3,4,5,6,7,8], 2))
+
+2) from random import randint
+import time
+start_time = time.time()
+def InterpSearch(ls, val):
+    low = 0
+    high = (len(ls) - 1)
+    while low <= high and val >= ls[low] and val <= ls[high]:
+        index = low + int(((float(high - low) / ( ls[high] - ls[low])) * ( val - ls[low])))
+        if ls[index] == val:
+            return index
+        if ls[index] < val:
+            low = index + 1;
+        else:
+            high = index - 1;
+    return -1
+ls = [randint(0,100) for i in range(100)]
+ls = sorted(ls)
+print(ls)
+InterpSearch(ls, 0)
+print("Время поиска %s" % (time.time()-start_time))
+
+# бинарный из 9 практики:     
+# 1 - Время поиска 0.025865554809570312
+# 10 - Время поиска 0.011240005493164062
+# 100 - Время поиска 0.01271677017211914
+# 1000 - Время поиска 0.035009145736694336
+#1000000 - Время поиска 0.8943097591400146
+
+# интерполяционный из 10 практики:
+# 1 - Время поиска 0.02115464210510254
+# 10 - Время поиска 0.015025854110717773
+# 100 - Время поиска 0.011121749877929688
+# 1000 - Время поиска 0.028506040573120117
+#1000000 - Время поиска 0.9232981204986572

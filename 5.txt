@@ -1,0 +1,8 @@
+key_for_fib = {1: 1, 2: 1}  # Номер числа: число Фибоначчи
+def memo_cycle(n):
+    result = key_for_fib.get(n)
+    while result == None:
+        result = memo_cycle(n-2) + memo_cycle(n-1)
+        key_for_fib[n] = result
+    return result
+print('Число Фибоначчи:', memo_cycle(6))
